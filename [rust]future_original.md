@@ -1,3 +1,4 @@
+```rust
 enum Poll<T> {
     Ready(T),
     Pending
@@ -60,6 +61,7 @@ thread_local!(static NOTIFY: RefCell<bool> = RefCell::new(true));
 
 /*
 相同的声明周期,只会选择最小最短的那个来用,哪个最先被销毁,生命周期就是哪个
+struct定义引用,必须加生命周期
  */
 struct Context<'a> {
     waker: &'a Waker,
@@ -123,3 +125,4 @@ fn main() {
     let my_future = MyFuture::default();
     println!("Output: {}", run(AddOneFuture(my_future)));
 }
+```
